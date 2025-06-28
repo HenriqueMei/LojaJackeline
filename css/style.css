@@ -1,0 +1,171 @@
+ /* ===== ESTILOS GERAIS ===== */
+ /* Definição das fontes e cores base do site */
+ body {
+     font-family: 'Raleway', sans-serif;
+     background-color: #f8f5ff;
+     color: #333;
+ }
+
+ /* Estilo para os títulos principais */
+ h1,
+ h2,
+ h3,
+ h4 {
+     font-family: 'Playfair Display', serif;
+ }
+
+ /* ===== ESTILOS DOS CARDS DE PRODUTOS ===== */
+ /* Efeito de elevação ao passar o mouse */
+ .product-card {
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     min-height: 380px;
+     /* Altura mínima para o card */
+     display: flex;
+     flex-direction: column;
+ }
+
+ /* Animação ao passar o mouse sobre o card */
+ .product-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+ }
+
+ /* Estilo para a imagem do produto com bordas arredondadas */
+ .product-image-container {
+     border-radius: 12px;
+     overflow: hidden;
+     background-color: #f9f9f9;
+     padding: 1rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 150px;
+     /* Altura fixa para o container da imagem */
+ }
+
+ /* Conteúdo do card que cresce para preencher o espaço */
+ .product-content {
+     display: flex;
+     flex-direction: column;
+     flex-grow: 1;
+     justify-content: space-between;
+ }
+
+ /* Container para os controles de adição ao carrinho */
+ .product-actions {
+     margin-top: 12px;
+ }
+
+ /* ===== BOTÃO DO WHATSAPP ===== */
+ /* Posicionamento fixo do botão de WhatsApp */
+ .whatsapp-btn {
+     position: fixed;
+     bottom: 20px;
+     right: 20px;
+     z-index: 100;
+     animation: pulse 2s infinite;
+ }
+
+ /* Animação de pulsação para o botão de WhatsApp */
+ @keyframes pulse {
+     0% {
+         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+     }
+
+     70% {
+         box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+     }
+
+     100% {
+         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+     }
+ }
+
+ /* ===== CONTADOR DO CARRINHO ===== */
+ /* Posicionamento do badge de contagem do carrinho */
+ .cart-badge {
+     position: absolute;
+     top: -8px;
+     right: -8px;
+ }
+
+ /* ===== ESTILOS DOS MODAIS ===== */
+ /* Transição suave para abertura/fechamento dos modais */
+ .modal {
+     transition: opacity 0.3s ease;
+ }
+
+ /* ===== ESTILOS DOS BOTÕES DE CATEGORIA ===== */
+ /* Estilo para o botão de categoria ativo */
+ .category-btn.active {
+     background-color: #f3e8ff;
+     color: #7e22ce;
+     font-weight: 600;
+ }
+
+ /* ===== ESTILOS DO CONTROLE DE QUANTIDADE ===== */
+ /* Container para os controles de quantidade */
+ .quantity-control {
+     display: flex;
+     align-items: center;
+     border: 1px solid #e2e8f0;
+     border-radius: 4px;
+     overflow: hidden;
+     width: 100px;
+     /* Largura fixa para o controle de quantidade */
+ }
+
+ /* Botões de aumentar/diminuir quantidade */
+ .quantity-btn {
+     background-color: #f3f4f6;
+     border: none;
+     padding: 4px 8px;
+     cursor: pointer;
+     transition: background-color 0.2s;
+     flex-shrink: 0;
+ }
+
+ /* Efeito hover nos botões de quantidade */
+ .quantity-btn:hover {
+     background-color: #e5e7eb;
+ }
+
+ /* Campo de entrada da quantidade */
+ .quantity-input {
+     width: 40px;
+     border: none;
+     text-align: center;
+     -moz-appearance: textfield;
+     flex-grow: 1;
+ }
+
+ /* Remove as setas do input number */
+ .quantity-input::-webkit-outer-spin-button,
+ .quantity-input::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+ }
+
+ /* Botão de adicionar ao carrinho */
+ .add-to-cart {
+     width: 100%;
+     padding: 8px 0;
+     font-weight: 500;
+ }
+
+ /* ===== ESTILOS DO HEADER ===== */
+ /* Gradiente de fundo para o cabeçalho */
+ .header-gradient {
+     background-image: linear-gradient(to right, #9333ea, #4f46e5);
+ }
+
+ /* ===== ESTILOS DO FOOTER ===== */
+ /* Estilo para o rodapé */
+ .footer-bg {
+     background-color: #1f2937;
+ }
+
+ /* Linha divisória no rodapé */
+ .footer-divider {
+     border-top: 1px solid #374151;
+ }

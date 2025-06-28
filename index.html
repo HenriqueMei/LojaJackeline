@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristais & Joias - Loja Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header - Cabeçalho do site com logo e carrinho -->
+    <header class="header-gradient text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">Cristais & Joias</h1>
+                    <p class="text-sm italic">Beleza natural em cada peça</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="cart-button" class="bg-white text-purple-700 p-2 rounded-full hover:bg-purple-100 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            <span id="cart-count" class="cart-badge bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content - Conteúdo principal com categorias e produtos -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Categories - Seção de botões de categorias -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-center">Categorias</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="category-btn bg-white px-4 py-2 rounded-full shadow hover:bg-purple-100 transition active" data-category="all">Todos</button>
+                <button class="category-btn bg-white px-4 py-2 rounded-full shadow hover:bg-purple-100 transition" data-category="cristais">Cristais</button>
+                <button class="category-btn bg-white px-4 py-2 rounded-full shadow hover:bg-purple-100 transition" data-category="joias">Joias</button>
+                <button class="category-btn bg-white px-4 py-2 rounded-full shadow hover:bg-purple-100 transition" data-category="conjuntos">Conjuntos</button>
+            </div>
+        </div>
+
+        <!-- Products Grid - Grade de produtos -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-center">Nossos Produtos</h2>
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Products will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer - Rodapé com informações de contato -->
+    <footer class="footer-bg text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">Cristais & Joias</h3>
+                    <p class="text-gray-300">Peças exclusivas para pessoas especiais</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-2">Contato</h4>
+                    <p class="text-gray-300">Entre em contato pelo WhatsApp</p>
+                    <p class="text-gray-300">Atendimento: Seg-Sex 9h às 18h</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 footer-divider text-center text-gray-400">
+                <p>&copy; 2023 Cristais & Joias. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button - Botão fixo do WhatsApp -->
+    <a href="https://wa.me/5500000000000" target="_blank" class="whatsapp-btn bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+    </a>
+
+    <!-- Cart Modal - Modal do carrinho de compras -->
+    <div id="cart-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4 overflow-hidden">
+            <div class="header-gradient text-white py-4 px-6">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold">Seu Carrinho</h3>
+                    <button id="close-cart" class="text-white hover:text-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6">
+                <div id="cart-items" class="mb-4 max-h-60 overflow-y-auto">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="border-t pt-4">
+                    <div class="flex justify-between font-bold text-lg mb-4">
+                        <span>Total:</span>
+                        <span id="cart-total">R$ 0,00</span>
+                    </div>
+                    <button id="checkout-btn" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition">
+                        Finalizar Compra
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal - Modal de finalização da compra -->
+    <div id="checkout-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
+            <div class="header-gradient text-white py-4 px-6">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold">Finalizar Compra</h3>
+                    <button id="close-checkout" class="text-white hover:text-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="name">Nome completo</label>
+                    <input type="text" id="name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Seu nome completo">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="phone">Telefone</label>
+                    <input type="tel" id="phone" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="(00) 00000-0000">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Forma de pagamento</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="payment" value="pix" class="mr-2" checked>
+                            <span>PIX</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="payment" value="transferencia" class="mr-2">
+                            <span>Transferência Bancária</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="payment" value="dinheiro" class="mr-2">
+                            <span>Dinheiro na entrega</span>
+                        </label>
+                    </div>
+                </div>
+                <button id="send-to-whatsapp" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">
+                    Enviar pedido pelo WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== DADOS DOS PRODUTOS =====
+        // Array com os produtos disponíveis na loja
+        const products = [
+            {
+                id: 1,
+                name: "Ametista Bruta",
+                description: "Cristal natural de ametista em estado bruto",
+                price: 89.90,
+                image: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                    <polygon points="50,10 80,30 80,70 50,90 20,70 20,30" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+                    <polygon points="50,10 80,30 50,50 20,30" fill="#a56acb" stroke="#8e44ad" stroke-width="1"/>
+                    <polygon points="50,50 80,30 80,70 50,90" fill="#8e44ad" stroke="#8e44ad" stroke-width="1"/>
+                    <polygon points="50,50 50,90 20,70 20,30" fill="#7d3c98" stroke="#8e44ad" stroke-width="1"/>
+                </svg>`,
+                category: "cristais"
+            },
+            {
+                id: 2,
+                name: "Colar de Quartzo Rosa",
+                description: "Colar com pingente de quartzo rosa polido",
+                price: 129.90,
+                image: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                    <circle cx="50" cy="60" r="20" fill="#f8bbd0" stroke="#e91e63" stroke-width="1"/>
+                    <path d="M50,20 L50,40" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                    <path d="M45,25 L55,25" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                    <path d="M50,40 L50,60" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                    <polygon points="45,55 55,55 50,65" fill="#f8bbd0" stroke="#e91e63" stroke-width="1"/>
+                </svg>`,
+                category: "joias"
+            },
+            {
+                id: 3,
+                name: "Conjunto Turmalina",
+                description: "Conjunto de brincos e colar com turmalina negra",
+                price: 249.90,
+                image: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                    <circle cx="50" cy="60" r="15" fill="#333" stroke="#222" stroke-width="1"/>
+                    <path d="M50,30 L50,45" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                    <circle cx="25" cy="30" r="8" fill="#333" stroke="#222" stroke-width="1"/>
+                    <circle cx="75" cy="30" r="8" fill="#333" stroke="#222" stroke-width="1"/>
+                    <path d="M25,22 L25,15" stroke="#e0e0e0" stroke-width="1" fill="none"/>
+                    <path d="M75,22 L75,15" stroke="#e0e0e0" stroke-width="1" fill="none"/>
+                </svg>`,
+                category: "conjuntos"
+            },
+            {
+                id: 4,
+                name: "Pulseira de Água Marinha",
+                description: "Pulseira delicada com pedras de água marinha",
+                price: 159.90,
+                image: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                    <path d="M20,50 Q50,30 80,50 Q50,70 20,50" fill="#add8e6" stroke="#5f9ea0" stroke-width="2" fill-opacity="0.7"/>
+                    <circle cx="30" cy="50" r="5" fill="#add8e6" stroke="#5f9ea0" stroke-width="1"/>
+                    <circle cx="50" cy="40" r="5" fill="#add8e6" stroke="#5f9ea0" stroke-width="1"/>
+                    <circle cx="70" cy="50" r="5" fill="#add8e6" stroke="#5f9ea0" stroke-width="1"/>
+                    <circle cx="50" cy="60" r="5" fill="#add8e6" stroke="#5f9ea0" stroke-width="1"/>
+                </svg>`,
+                category: "joias"
+            },
+            {
+                id: 5,
+                name: "Cristal de Selenita",
+                description: "Bastão de selenita para limpeza energética",
+                price: 45.90,
+                image: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                    <polygon points="20,40 80,30 75,70 15,60" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="2"/>
+                    <line x1="20" y1="40" x2="75" y2="70" stroke="#e0e0e0" stroke-width="1"/>
+                    <line x1="80" y1="30" x2="15" y2="60" stroke="#e0e0e0" stroke-width="1"/>
+                    <polygon points="20,40 80,30 75,70 15,60" fill="#f5f5f5" fill-opacity="0.5"/>
+                </svg>`,
+                category: "cristais"
+            },
+            {
+                id: 6,
+                name: "Conjunto Jade",
+                description: "Conjunto completo com pedras de jade",
+                price: 299.90,
+                image: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                    <circle cx="50" cy="60" r="15" fill="#a8e6cf" stroke="#1b5e20" stroke-width="1"/>
+                    <path d="M50,30 L50,45" stroke="#e0e0e0" stroke-width="2" fill="none"/>
+                    <circle cx="25" cy="30" r="8" fill="#a8e6cf" stroke="#1b5e20" stroke-width="1"/>
+                    <circle cx="75" cy="30" r="8" fill="#a8e6cf" stroke="#1b5e20" stroke-width="1"/>
+                    <rect x="40" y="80" width="20" height="5" fill="#a8e6cf" stroke="#1b5e20" stroke-width="1"/>
+                </svg>`,
+                category: "conjuntos"
+            }
+        ];
+
+        // ===== INICIALIZAÇÃO DO CARRINHO =====
+        // Array para armazenar os itens do carrinho
+        let cart = [];
+
+        // ===== ELEMENTOS DO DOM =====
+        // Referências aos elementos HTML que serão manipulados
+        const productsGrid = document.getElementById('products-grid');
+        const cartButton = document.getElementById('cart-button');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCartButton = document.getElementById('close-cart');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cartCount = document.getElementById('cart-count');
+        const checkoutButton = document.getElementById('checkout-btn');
+        const checkoutModal = document.getElementById('checkout-modal');
+        const closeCheckoutButton = document.getElementById('close-checkout');
+        const sendToWhatsAppButton = document.getElementById('send-to-whatsapp');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+
+        // ===== EXIBIÇÃO DOS PRODUTOS =====
+        // Função para exibir os produtos na grade, com filtro por categoria
+        function displayProducts(category = 'all') {
+            // Limpa a grade de produtos
+            productsGrid.innerHTML = '';
+            
+            // Filtra os produtos pela categoria selecionada
+            const filteredProducts = category === 'all' 
+                ? products 
+                : products.filter(product => product.category === category);
+            
+            // Cria os cards para cada produto
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg';
+                productCard.innerHTML = `
+                    <div class="product-image-container">
+                        ${product.image}
+                    </div>
+                    <div class="product-content p-4">
+                        <div>
+                            <h3 class="text-lg font-bold mb-1">${product.name}</h3>
+                            <p class="text-gray-600 text-sm mb-2">${product.description}</p>
+                            <div class="text-purple-700 font-bold text-lg mb-3">
+                                R$ ${product.price.toFixed(2)}
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <div class="quantity-control mb-3 mx-auto">
+                                <button class="quantity-btn decrease-btn" data-id="${product.id}">-</button>
+                                <input type="number" class="quantity-input" value="1" min="1" max="99" data-id="${product.id}">
+                                <button class="quantity-btn increase-btn" data-id="${product.id}">+</button>
+                            </div>
+                            <button class="add-to-cart bg-purple-600 text-white rounded hover:bg-purple-700 transition" data-id="${product.id}">
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                `;
+                productsGrid.appendChild(productCard);
+            });
+
+            // ===== EVENTOS DOS CONTROLES DE QUANTIDADE =====
+            // Adiciona eventos aos botões de aumentar quantidade
+            document.querySelectorAll('.increase-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = parseInt(e.target.getAttribute('data-id'));
+                    const input = document.querySelector(`.quantity-input[data-id="${productId}"]`);
+                    let value = parseInt(input.value);
+                    if (value < 99) {
+                        input.value = value + 1;
+                    }
+                });
+            });
+
+            // Adiciona eventos aos botões de diminuir quantidade
+            document.querySelectorAll('.decrease-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = parseInt(e.target.getAttribute('data-id'));
+                    const input = document.querySelector(`.quantity-input[data-id="${productId}"]`);
+                    let value = parseInt(input.value);
+                    if (value > 1) {
+                        input.value = value - 1;
+                    }
+                });
+            });
+
+            // Adiciona eventos aos inputs de quantidade para validar valores
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    let value = parseInt(e.target.value);
+                    if (isNaN(value) || value < 1) {
+                        e.target.value = 1;
+                    } else if (value > 99) {
+                        e.target.value = 99;
+                    }
+                });
+            });
+
+            // Adiciona eventos aos botões "Adicionar ao Carrinho"
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', addToCart);
+            });
+        }
+
+        // ===== FUNÇÕES DO CARRINHO =====
+        // Função para adicionar produto ao carrinho
+        function addToCart(e) {
+            const productId = parseInt(e.target.getAttribute('data-id'));
+            const product = products.find(p => p.id === productId);
+            
+            // Obtém a quantidade selecionada
+            const quantityInput = document.querySelector(`.quantity-input[data-id="${productId}"]`);
+            const quantity = parseInt(quantityInput.value);
+            
+            // Verifica se o produto já está no carrinho
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                // Atualiza a quantidade se o produto já estiver no carrinho
+                existingItem.quantity += quantity;
+            } else {
+                // Adiciona novo item ao carrinho
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: quantity
+                });
+            }
+            
+            // Atualiza o contador do carrinho
+            updateCartCount();
+            
+            // Mostra feedback visual da adição
+            const button = e.target;
+            const originalText = button.textContent;
+            button.textContent = 'Adicionado ✓';
+            button.classList.add('bg-green-500');
+            
+            // Restaura o texto original após 1 segundo
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('bg-green-500');
+            }, 1000);
+            
+            // Reseta o input de quantidade para 1
+            quantityInput.value = 1;
+        }
+
+        // Função para atualizar o contador de itens no carrinho
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = count;
+        }
+
+        // Função para atualizar a exibição do carrinho
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = '';
+            
+            // Exibe mensagem se o carrinho estiver vazio
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-4">Seu carrinho está vazio</p>';
+                cartTotal.textContent = 'R$ 0,00';
+                return;
+            }
+            
+            let total = 0;
+            
+            // Cria elementos para cada item no carrinho
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.id);
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'flex justify-between items-center mb-4 pb-4 border-b';
+                cartItem.innerHTML = `
+                    <div>
+                        <h4 class="font-medium">${item.name}</h4>
+                        <p class="text-gray-600 text-sm">R$ ${item.price.toFixed(2)} x ${item.quantity}</p>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="quantity-control mr-2">
+                            <button class="quantity-btn cart-decrease-quantity" data-id="${item.id}">-</button>
+                            <input type="number" class="quantity-input cart-quantity-input" value="${item.quantity}" min="1" max="99" data-id="${item.id}">
+                            <button class="quantity-btn cart-increase-quantity" data-id="${item.id}">+</button>
+                        </div>
+                        <button class="remove-item ml-2 text-red-500 hover:text-red-700" data-id="${item.id}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            // Atualiza o valor total
+            cartTotal.textContent = `R$ ${total.toFixed(2)}`;
+            
+            // Adiciona eventos aos botões do carrinho
+            document.querySelectorAll('.cart-increase-quantity').forEach(button => {
+                button.addEventListener('click', increaseCartQuantity);
+            });
+            
+            document.querySelectorAll('.cart-decrease-quantity').forEach(button => {
+                button.addEventListener('click', decreaseCartQuantity);
+            });
+            
+            document.querySelectorAll('.cart-quantity-input').forEach(input => {
+                input.addEventListener('change', updateCartItemQuantity);
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', removeItem);
+            });
+        }
+
+        // Função para aumentar a quantidade de um item no carrinho
+        function increaseCartQuantity(e) {
+            const itemId = parseInt(e.target.getAttribute('data-id'));
+            const item = cart.find(item => item.id === itemId);
+            const input = document.querySelector(`.cart-quantity-input[data-id="${itemId}"]`);
+            
+            if (item.quantity < 99) {
+                item.quantity += 1;
+                input.value = item.quantity;
+                updateCartDisplay();
+                updateCartCount();
+            }
+        }
+
+        // Função para diminuir a quantidade de um item no carrinho
+        function decreaseCartQuantity(e) {
+            const itemId = parseInt(e.target.getAttribute('data-id'));
+            const item = cart.find(item => item.id === itemId);
+            const input = document.querySelector(`.cart-quantity-input[data-id="${itemId}"]`);
+            
+            if (item.quantity > 1) {
+                item.quantity -= 1;
+                input.value = item.quantity;
+                updateCartDisplay();
+                updateCartCount();
+            } else {
+                removeItem(e);
+            }
+        }
+
+        // Função para atualizar a quantidade de um item no carrinho via input
+        function updateCartItemQuantity(e) {
+            const itemId = parseInt(e.target.getAttribute('data-id'));
+            const item = cart.find(item => item.id === itemId);
+            let value = parseInt(e.target.value);
+            
+            // Valida o valor inserido
+            if (isNaN(value) || value < 1) {
+                value = 1;
+                e.target.value = 1;
+            } else if (value > 99) {
+                value = 99;
+                e.target.value = 99;
+            }
+            
+            item.quantity = value;
+            updateCartDisplay();
+            updateCartCount();
+        }
+
+        // Função para remover um item do carrinho
+        function removeItem(e) {
+            const itemId = parseInt(e.target.closest('button').getAttribute('data-id'));
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartDisplay();
+            updateCartCount();
+        }
+
+        // ===== FINALIZAÇÃO DA COMPRA =====
+        // Função para enviar o pedido para o WhatsApp
+        function sendToWhatsApp() {
+            // Obtém os dados do formulário
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            
+            // Valida os campos obrigatórios
+            if (!name || !phone) {
+                alert('Por favor, preencha seu nome e telefone.');
+                return;
+            }
+            
+            // Monta a mensagem com os dados do pedido
+            let message = `Olá! Gostaria de fazer um pedido:\n\n`;
+            message += `Nome: ${name}\n`;
+            message += `Telefone: ${phone}\n`;
+            message += `Forma de pagamento: ${paymentMethod}\n\n`;
+            message += `*Itens do pedido:*\n`;
+            
+            // Adiciona os itens do carrinho à mensagem
+            let total = 0;
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.id);
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `${item.name} - ${item.quantity} x R$ ${item.price.toFixed(2)} = R$ ${itemTotal.toFixed(2)}\n`;
+            });
+            
+            message += `\n*Total: R$ ${total.toFixed(2)}*`;
+            
+            // Substitua pelo seu número de WhatsApp real
+            const whatsappNumber = '5516996308098';
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Abre o WhatsApp em uma nova aba
+            window.open(whatsappUrl, '_blank');
+            
+            // Limpa o carrinho após enviar
+            cart = [];
+            updateCartCount();
+            checkoutModal.classList.add('hidden');
+            cartModal.classList.add('hidden');
+        }
+
+        // ===== FILTRO DE CATEGORIAS =====
+        // Função para filtrar produtos por categoria
+        function filterProducts(e) {
+            const category = e.target.getAttribute('data-category');
+            
+            // Atualiza o botão ativo
+            categoryButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-purple-100', 'text-purple-700');
+                btn.classList.add('bg-white');
+            });
+            e.target.classList.add('active', 'bg-purple-100', 'text-purple-700');
+            e.target.classList.remove('bg-white');
+            
+            // Exibe os produtos da categoria selecionada
+            displayProducts(category);
+        }
+
+        // ===== EVENTOS =====
+        // Evento para abrir o modal do carrinho
+        cartButton.addEventListener('click', () => {
+            updateCartDisplay();
+            cartModal.classList.remove('hidden');
+        });
+
+        // Evento para fechar o modal do carrinho
+        closeCartButton.addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+        });
+
+        // Evento para abrir o modal de checkout
+        checkoutButton.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Seu carrinho está vazio.');
+                return;
+            }
+            cartModal.classList.add('hidden');
+            checkoutModal.classList.remove('hidden');
+        });
+
+        // Evento para fechar o modal de checkout
+        closeCheckoutButton.addEventListener('click', () => {
+            checkoutModal.classList.add('hidden');
+        });
+
+        // Evento para enviar o pedido pelo WhatsApp
+        sendToWhatsAppButton.addEventListener('click', sendToWhatsApp);
+
+        // Eventos para os botões de categoria
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', filterProducts);
+        });
+
+        // Eventos para fechar modais ao clicar fora
+        window.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.classList.add('hidden');
+            }
+            if (e.target === checkoutModal) {
+                checkoutModal.classList.add('hidden');
+            }
+        });
+
+        // ===== INICIALIZAÇÃO =====
+        // Exibe todos os produtos ao carregar a página
+        displayProducts();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'94cd0137e635a46c',t:'MTc0OTQzNDEwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
